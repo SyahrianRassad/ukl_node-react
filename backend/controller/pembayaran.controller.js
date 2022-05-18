@@ -22,6 +22,28 @@ module.exports={
             }
         })
     },
+    getOnePembayaran : (req,res)=>{
+        let nama = req.params.nama
+        let url = `select p.id, p.tgl_bayar, s.nama, s.nisn, s.id_spp, a.nominal, t.nama as nama_petugas
+                    from pembayaran p join siswa s on s.nisn = p.nisn
+                    join petugas t on p.id_petugas = t.id
+                    join spp a on s.id_spp = a.id where s.nama = '${nama}'`
+        db.query(url,(err,result)=>{
+            if(err){
+                console.log(err)
+                res.status(500).json({
+                    message: "Internal error"
+                })
+            }else{
+                if(result.length>0){
+                    res.status(200).json({
+                        message: 'Tampil',
+                        pembayaran: result
+                    })
+                }
+            }
+        })
+    },
     postPembayaran : (req,res)=>{
         const datanew = {
             id_petugas : req.body.id_petugas,

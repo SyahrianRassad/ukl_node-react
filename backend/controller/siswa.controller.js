@@ -18,6 +18,24 @@ module.exports={
             }
         })
     },
+    getOneSiswa : (req,res)=>{
+        const nisn = req.params.nisn
+        db.query(`select * from siswa where nisn = ${nisn}`,(err,result)=>{
+            if(err){
+                console.log(err)
+                res.status(500).json({
+                    message: "Internal error"
+                })
+            }else{
+                if(result.length>0){
+                    res.status(200).json({
+                        message: 'Tampil',
+                        siswa: result
+                    })
+                }
+            }
+        })
+    },
     postSiswa : (req,res)=>{
         const datanew = {
             nisn : req.body.nisn,

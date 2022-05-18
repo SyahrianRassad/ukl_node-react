@@ -36,16 +36,18 @@ router.route('/kelas/:id').delete(deleteKelas)
 
 const{
     getSiswa,
+    getOneSiswa,
     postSiswa,
     putSiswa,
     deleteSiswa
 } = require('./controller/siswa.controller')
 
 router.route('/siswa').get(getSiswa).post(postSiswa).put(putSiswa)
-router.route('/siswa/:nisn').delete(deleteSiswa)
+router.route('/siswa/:nisn').delete(deleteSiswa).get(getOneSiswa)
 
 const{
     getPembayaran,
+    getOnePembayaran,
     postPembayaran,
     putPembayaran,
     deletePembayaran
@@ -53,5 +55,6 @@ const{
 
 router.route('/pembayaran').get(getPembayaran).post(postPembayaran).put(putPembayaran)
 router.route('/pembayaran/:id').delete(deletePembayaran)
+router.route('/pembayaran/:nama').get(getOnePembayaran)
 
 module.exports = router;

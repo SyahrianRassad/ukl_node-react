@@ -106,7 +106,6 @@ module.exports={
             return res.json({
                 message: 'login berhasil silahkan menggunakan token dibawah ini untuk mengakses', 
                 token,
-                level,
                 data : result
             })
         })
