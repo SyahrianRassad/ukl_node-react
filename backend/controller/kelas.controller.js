@@ -18,6 +18,24 @@ module.exports={
             }
         })
     },
+    // getNamaKelas : (req, res)=>{
+    //     const id = req.params.id
+    //     db.query(`select nama from kelas where id = ${id}`,(err,result)=>{
+    //         if(err){
+    //             console.log(err)
+    //             res.status(500).json({
+    //                 message: "Internal error"
+    //             })
+    //         }else{
+    //             if(result.length>0){
+    //                 res.status(200).json({
+    //                     message: 'Tampil',
+    //                     kelas: result
+    //                 })
+    //             }
+    //         }
+    //     })
+    // },
     postKelas : (req,res)=>{
         const datanew = {
             angkatan: req.body.angkatan,

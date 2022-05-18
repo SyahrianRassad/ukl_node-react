@@ -2,7 +2,10 @@ const db = require("../db");
 
 module.exports={
     getSiswa : (req,res)=>{
-        db.query(`select * from siswa`,(err,result)=>{
+        let url = `select s.nisn, s.nis, s.nama, s.alamat, s.tlp, k.nama as nama_kelas, p.nominal
+                    from siswa s join kelas k on s.id_kelas = k.id
+                    join spp p on p.id = s.id_spp`
+        db.query(url,(err,result)=>{
             if(err){
                 console.log(err)
                 res.status(500).json({
